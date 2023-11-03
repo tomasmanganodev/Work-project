@@ -24,12 +24,11 @@
     background-color: #8C92AC;
 }
 
+
 .registerLogin{
     height: 100%;
     width: 50%;
     background-color: #C5C8D5;
-    display: flexbox;
-    align-items: center;
 }
 
 .registerLoginbox{

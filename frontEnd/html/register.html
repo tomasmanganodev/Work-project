@@ -16,53 +16,56 @@
         </ul>
     </div>
     
-    <div class="bodyLogin">
+    <div class="bodyLogin" >
         <div class="menuLogin">
             <div class="introLogin">
-
-            </div>
-            <div class="registerLogin">
+        </div>
+        <form action="submit" id="formUserAdd" class="registerLogin">
+            
                 <div class="registerLoginbox">
                     <div class="registerLogItem">
                         <label for="">Name</label>
-                        <input type="text">
+                        <input type="text" name="name" id="name">
                     </div>
                     <div class="registerLogItem">
-                        <label for="">Email</label>
-                        <input type="email">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" />
                     </div>
                     <div class="registerLogItem">
-                        <label for="">Password</label>
-                        <input type="password">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" />
                     </div>
                     <div class="registerLogItem">
                         <label for="">Username</label>
-                        <input type="text">
+                        <input type="text" name="username" id="username">
                     </div>
                     <div class="registerLogItem">
                         <label for="">Salary</label>
-                        <input type="number">
+                        <input type="number" name="salary" id="salary">
                     </div>
                     <div class="registerLogItem">
                         <label for="">Date start</label>
-                        <input type="date">
+                        <input type="date" name="date_start" id="date_start">
                     </div>
                     <div class="registerLogItem">
                         <label for="">Birth date</label>
-                        <input type="date">
+                        <input type="date" name="birthdate" id="birthdate">
                     </div>
                 </div>
                 <div class="registerLoginBox2">
+                
                     <div class="registerLogItem ">
-                        <button class="logButton">Register</button>
+                        <button type="submit" class="logButton">Register</button>
                     </div>
                 </div>
+            
 
-
-            </div>
+        </form>
+            
         </div>
     </div>
     
+    <script type="module" src="../js/fetch/User.js"></script>
 
 </body>
 </html>

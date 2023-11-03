@@ -16,7 +16,7 @@ module.exports = class user{
     //
     save(){
         return db.execute(`INSERT INTO users 
-        (name, email, password, id_username, id_salary, id_date_start, id_birth_date) 
+        (name, email, passwrd, id_username, id_salary, id_date_start, id_birth_date) 
         VALUES (?,?,?,?,?,?,?)`,
         [this.name, this.email, this.password, this.id_username, 
          this.id_salary,this.id_date_start ,this.id_birth_date]
