@@ -1,0 +1,67 @@
+.bodyLogin{
+    display: flex;
+    
+    width: 100%;
+    height: 80vh;
+}
+
+
+.menuLogin{
+    width: 70%;
+    height: 90%;
+    border: 1px solid #8C92AC;
+    border-radius: 0.5%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin: 5% 15%;
+    display: flex;
+    flex-direction: row;
+}
+
+.introLogin {
+    height: 100%;
+    width: 50%;
+    background-color: #8C92AC;
+}
+
+.registerLogin{
+    height: 100%;
+    width: 50%;
+    background-color: #C5C8D5;
+    display: flexbox;
+    align-items: center;
+}
+
+.registerLoginbox{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
+    align-items: center;
+    align-content: space-between;
+    
+}
+
+.registerLoginBox2{
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    width: 100%;
+    align-items: center;
+    align-content: space-between;
+    
+}
+
+.registerLogItem{
+    width: 60%;
+    margin: 1.5% 0 1.5% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.logButton{
+ width: 100%;
+
+}
