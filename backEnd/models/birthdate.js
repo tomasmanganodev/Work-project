@@ -26,6 +26,14 @@ module.exports = class birthDate{
         );
     }
     //
+      static find_by_birth_date(data){
+        return db.execute(`SELECT id
+        FROM birthdates
+        WHERE birthdates.birthdate = ?`,
+        [data]
+        );
+    }
+    //
     static delete_by_id(id){
         return db.execute(`DELETE FROM birthdates
         WHERE birthdates.id = ?` ,

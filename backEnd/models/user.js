@@ -18,8 +18,8 @@ module.exports = class user{
         return db.execute(`INSERT INTO users 
         (name, email, passwrd, id_username, id_salary, id_date_start, id_birth_date) 
         VALUES (?,?,?,?,?,?,?)`,
-        [this.name, this.email, this.password, this.id_username, 
-         this.id_salary,this.id_date_start ,this.id_birth_date]
+        [this.name, this.email, this.password, 1,1,1,1] /* this.id_username, 
+         this.id_salary,this.id_date_start ,this.id_birth_date]*/
         );
     }
     //	
@@ -38,6 +38,14 @@ module.exports = class user{
         );
     }
     //
+    static find_by_email(data){
+        return db.execute(`SELECT id
+        FROM users
+        WHERE users.email = ?`,
+        [data]
+        );
+    }
+    //
     static delete_by_id(id){
         return db.execute(`DELETE FROM users
         WHERE users.id = ?` ,
@@ -49,11 +57,12 @@ module.exports = class user{
         return db.execute(`UPDATE users 
         SET name = ?,
         SET email = ?, 
-        SET password = ?, 
+        SET passwrd = ?, 
         SET id_username = ?, 
         SET id_salary = ?, 
         SET id_date_start = ?, 
         SET id_birth_date = ?
-        WHERE users.id = ?`, [this.name, id]);
+        WHERE users.id = ?`, [this.name,this.email,this.password, this.id_username
+        , this.id_salary, this.id_date_start, this.id_birth_date, id]);
     }
 }

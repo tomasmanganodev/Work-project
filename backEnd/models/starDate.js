@@ -26,6 +26,14 @@ module.exports = class birthDate{
         );
     }
     //
+    static find_by_date_start(data){
+        return db.execute(`SELECT id
+        FROM date_start
+        WHERE date_start.date_start = ?`,
+        [data]
+        );
+    }
+    //
     static delete_by_id(id){
         return db.execute(`DELETE FROM date_start
         WHERE date_start.id = ?`,

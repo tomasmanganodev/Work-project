@@ -1,28 +1,36 @@
 const db = require("../util/database");
 
 module.exports = class username{
-    constructor(id, user_name){
+    constructor(id, username){
         this.id = id;
-        this.user_name = user_name;
+        this.username = username;
     }
     //
     save(){
-        return db.execute(`INSERT INTO usernames (user_name) 
+        return db.execute(`INSERT INTO usernames (username) 
         VALUES (?)`,
-        [this.user_name]
+        [this.username]
         );
     }
     //
     static find_all(){
-        return db.execute(`SELECT id, user_name
+        return db.execute(`SELECT id, username
         FROM usernames`);
     }
     
     static find_by_id(id){
-        return db.execute(`SELECT id, user_name
+        return db.execute(`SELECT id, username
         FROM usernames
         WHERE usernames.id = ?`,
         [id]
+        );
+    }
+    //
+    static find_by_username(data){
+        return db.execute(`SELECT id
+        FROM usernames
+        WHERE usernames.username = ?`,
+        [data]
         );
     }
     //
@@ -35,7 +43,7 @@ module.exports = class username{
     // 
     static update_by_id(id){
         return db.execute(`UPDATE usernames 
-        SET user_name = ?
-        WHERE usernames.id = ?`, [this.user_name, id]);
+        SET username = ?
+        WHERE usernames.id = ?`, [this.username, id]);
     }
 }

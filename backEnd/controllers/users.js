@@ -1,8 +1,10 @@
+const bcrypt =require("bcrypt");
 const user = require("../models/user");
-const username = require("../models/username");
-const salary = require("../models/salary");
+const Username = require("../models/username");
+const Salary = require("../models/salary");
 const birth_date = require("../models/birthdate");
 const startDate = require("../models/salary");
+const validation = require("../middlewares/validations");
 
 exports.postAddUser = async (req, res, next)=>{
     const name = req.body.name;
@@ -12,10 +14,78 @@ exports.postAddUser = async (req, res, next)=>{
     const salary = req.body.salary;
     const date_start = req.body.date_start;
     const birthDate = req.body.birthdate;
-
-    const newUser = new user(null, name, email, password,
-        1, 1, 1, 1);// username, salary, date_start, birthDate);
-    newUser.save();
-
+    const val_email = await validation.checkDataExists(email,"users","email");
+    const val_username = await validation.checkDataExists(username,"usernames","username");
+    const val_Salary = await validation.checkDataExists(salary, "salaries", "salaries");
+    const val_birthDate = await validation.checkDataExists(birthDate, "birthdates", "birthdate");
+    const val_datestart = await validation.checkDataExists(date_start, "date_start", "date_start");
+    const saltRounds = 10;
+    
+   
+     // Check if username already exist
+    if (val_username === 0) 
+     {
+         const newUsername = new Username(null, username);
+         newUsername.save();
+        username = await Username.find_by_username(username);
+       
+        
+     }
+     else if(val_username === 1)
+     {
+        username = await Username.find_by_username(username);
+        
+     } 
+    // Check if salary already exist
+    if (val_Salary === 0) 
+    {
+        const newSalary = new Salary(null, salary);
+        newSalary.save();
+        salary = Salary.find_by_salaries(salary);
+        
+       
+    }
+    else if(val_Salary === 1)
+    {
+        salary = await Salary.find_by_salaries(salary);
+    }
+    // Check if birthDate already exist
+    if(val_birthDate === 0){
+        const newBirthdate = new birth_date(null, birthDate);
+        newBirthdate.save();
+        birthDate = birth_date.find_by_birth_date(birthDate);
+    }
+    else if(val_birthDate === 1){
+        birthDate = birth_date.find_by_birth_date(birthDate);
+    }
+    // Check if datestart already exist
+    if(val_datestart === 0){
+        const  newDatestart = new startDate(null, date_start);
+        newDatestart.save();
+        date_start = startDate.find_by_date_start(date_start);
+        
+    }
+    else if (val_datestart === 1){
+         date_start = startDate.find_by_date_start(date_start);
+        return date_start;
+    }
+    
+     // Check if email already exist
+    
+    if (val_email === 0) 
+     {
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashed_password = await bcrypt.hash(password, salt);
+        const newUser = new user(null, name, email, hashed_password,
+        username_id[0][0].id, salary[0][0].id, 
+        date_start[0][0].id, birthDate[0][0].id);
+        newUser.save(); 
+        return res.status(201).json({ message: "User created" });;  
+     }
+     else if(val_email === 1)
+     {
+         const email_id = await user.find_by_email(email);
+         return email_id;
+    } 
 
 }

@@ -1,0 +1,1 @@
+import {postData, getData} from "./postGet.js";

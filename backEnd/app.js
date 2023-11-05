@@ -5,7 +5,12 @@ const bodyParser = require('body-parser');
 const routesUser = require('./routes/users');
 
 app.use(bodyParser.json());
-app.use(cors());
+
+const corsOptions = {
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify the HTTP methods you want to allow
+  allowedHeaders: 'Content-Type,Authorization', // Specify the custom headers you want to allow
+};
+app.use(cors(corsOptions));
 /*
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

@@ -9,7 +9,7 @@ export async function getData(url) {
     }
   }
   
-  export async function postData(url, data) {
+export async function postData(url, data) {
     try {
       const response = await fetch(url, {
         method: "POST",
