@@ -6,8 +6,8 @@ module.exports = class salaries{
         this.salaries = salaries;
     }
     //
-    save(){
-        return db.execute(`INSERT INTO salaries (salaries) 
+    async save(){
+        return await db.execute(`INSERT INTO salaries (salaries) 
         VALUES (?)`,
         [this.salaries]
         );
@@ -25,8 +25,8 @@ module.exports = class salaries{
         [id]
         );
     }
-    static find_by_salaries(data){
-        return db.execute(`SELECT id
+    static async find_by_salaries(data){
+        return await db.execute(`SELECT id
         FROM salaries
         WHERE salaries.salaries = ?`,
         [data]

@@ -6,28 +6,28 @@ module.exports = class username{
         this.username = username;
     }
     //
-    save(){
-        return db.execute(`INSERT INTO usernames (username) 
+    async save(){
+        return await db.execute(`INSERT INTO usernames (username) 
         VALUES (?)`,
         [this.username]
         );
     }
     //
-    static find_all(){
-        return db.execute(`SELECT id, username
+    static async find_all(){
+        return await db.execute(`SELECT id, username
         FROM usernames`);
     }
     
-    static find_by_id(id){
-        return db.execute(`SELECT id, username
+    static async find_by_id(id){
+        return await db.execute(`SELECT id, username
         FROM usernames
         WHERE usernames.id = ?`,
         [id]
         );
     }
     //
-    static find_by_username(data){
-        return db.execute(`SELECT id
+    static async find_by_username(data){
+        return await db.execute(`SELECT id
         FROM usernames
         WHERE usernames.username = ?`,
         [data]

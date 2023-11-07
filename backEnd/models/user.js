@@ -14,11 +14,11 @@ module.exports = class user{
         this.id_birth_date = id_birth_date;
     }
     //
-    save(){
-        return db.execute(`INSERT INTO users 
+    async save(){
+        return await db.execute(`INSERT INTO users 
         (name, email, passwrd, id_username, id_salary, id_date_start, id_birth_date) 
         VALUES (?,?,?,?,?,?,?)`,
-        [this.name, this.email, this.password, 1,1,1,1] /* this.id_username, 
+        [this.name, this.email, this.password, this.id_username ,this.id_salary, this.id_date_start, this.id_birth_date] /* this.id_username, 
          this.id_salary,this.id_date_start ,this.id_birth_date]*/
         );
     }

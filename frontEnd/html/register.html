@@ -3,69 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Registers</title>
     <link rel="stylesheet" href="../css/navBar.css" />
-    <link rel="stylesheet" href="../css/login.css" />
 </head>
 <body>
     <div id="navBar">
         <ul id="navBarList">
-        
           <li><a class="navBarLink" href=""></a>My user</li>
-          <li><a class="navBarLink" href=""></a>Registers</li>
+          <li><a class="navBarLink" href="./register.html"></a>Registers</li>
         </ul>
     </div>
-    
-    <div class="bodyLogin" >
-        <div class="menuLogin">
-            <div class="introLogin">
-        </div>
-        <form action="submit" id="formUserAdd" class="registerLogin">
-            
-                <div class="registerLoginbox">
-                    <div class="registerLogItem">
-                        <label for="">Name</label>
-                        <input type="text" name="name" id="name">
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" />
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" id="password" />
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="">Username</label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="">Salary</label>
-                        <input type="number" name="salary" id="salary">
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="">Date start</label>
-                        <input type="date" name="date_start" id="date_start">
-                    </div>
-                    <div class="registerLogItem">
-                        <label for="">Birth date</label>
-                        <input type="date" name="birthdate" id="birthdate">
-                    </div>
-                </div>
-                <div class="registerLoginBox2">
-                
-                    <div class="registerLogItem ">
-                        <button type="submit" class="logButton">Register</button>
-                    </div>
-                </div>
-            
 
-        </form>
+    <div>
+        <table>
+            <tr id="table_header">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Salary</th>
+                <th>Birthdate</th>
+                <th>Date start</th>
+            </tr>
             
-        </div>
+        </table>
     </div>
     
-    <script type="module" src="../js/fetch/User.js"></script>
-
 </body>
 </html>

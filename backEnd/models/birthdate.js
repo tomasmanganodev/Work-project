@@ -1,33 +1,33 @@
 const db = require("../util/database");
 
 module.exports = class birthDate{
-    constructor(id, birth_date){
+    constructor(id, birthdate){
         this.id = id;
-        this.birth_date = birth_date;
+        this.birthdate = birthdate;
     }
     //
-    save(){
-        return db.execute(`INSERT INTO birth_date (birth_date) 
+    async save(){
+        return await db.execute(`INSERT INTO birthdates (birthdate) 
         VALUES (?)`,
-        [this.birth_date]
+        [this.birthdate]
         );
     }
     //	
     static find_all(){
-        return db.execute(`SELECT id, birth_date
+        return db.execute(`SELECT id, birthdate
         FROM birthdates`);
     }
     //
     static find_by_id(id){
-        return db.execute(`SELECT id, birth_date
+        return db.execute(`SELECT id, birthdate
         FROM birthdates
         WHERE birthdates.id = ?`,
         [id]
         );
     }
     //
-      static find_by_birth_date(data){
-        return db.execute(`SELECT id
+      static async find_by_birthdate(data){
+        return await db.execute(`SELECT id
         FROM birthdates
         WHERE birthdates.birthdate = ?`,
         [data]
@@ -43,7 +43,7 @@ module.exports = class birthDate{
     // 
     static update_by_id(id){
         return db.execute(`UPDATE birthdates
-        SET birth_date = ?
-        WHERE birthdates.id = ?`, [this.birth_date, id]);
+        SET birthdate = ?
+        WHERE birthdates.id = ?`, [this.birthdate, id]);
     }
 }
