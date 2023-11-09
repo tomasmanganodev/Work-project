@@ -1,0 +1,28 @@
+.bodyRegister{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+}
+
+.tableRegister{
+    width: 80%;
+    height: 95%;
+    margin-top: 5%;
+    margin-left: 1%;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.rowRegister{
+   height: 10%;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.cellRegister{
+   
+   min-height: 30px;
+    width: 14.28%;
+    border: 1px solid black; 
+}

@@ -19,12 +19,12 @@ module.exports = class user{
         (name, email, passwrd, id_username, id_salary, id_date_start, id_birth_date) 
         VALUES (?,?,?,?,?,?,?)`,
         [this.name, this.email, this.password, this.id_username ,this.id_salary, this.id_date_start, this.id_birth_date] /* this.id_username, 
-         this.id_salary,this.id_date_start ,this.id_birth_date]*/
+         this.id_salary,this.id_date_start ,this.id_birth_date]
         );
     }
     //	
-    static find_all(){
-        return db.execute(`SELECT id, name, email, password, id_username,
+    static async find_all(){
+        return await db.execute(`SELECT id, name, email, id_username,
         id_salary, id_date_start, id_birth_date
         FROM users`);
     }

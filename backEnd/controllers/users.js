@@ -96,5 +96,15 @@ exports.postAddUser = async (req, res, next)=>{
          return email_id;
     } 
     
-
 }
+
+exports.getUsers = async (req, res, next) => {
+    try {
+      const users = await user.find_all();
+      res.status(201).json({
+        list: users[0],
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
