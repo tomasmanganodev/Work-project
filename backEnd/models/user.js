@@ -18,8 +18,7 @@ module.exports = class user{
         return await db.execute(`INSERT INTO users 
         (name, email, passwrd, id_username, id_salary, id_date_start, id_birth_date) 
         VALUES (?,?,?,?,?,?,?)`,
-        [this.name, this.email, this.password, this.id_username ,this.id_salary, this.id_date_start, this.id_birth_date] /* this.id_username, 
-         this.id_salary,this.id_date_start ,this.id_birth_date]
+        [this.name, this.email, this.password, this.id_username ,this.id_salary, this.id_date_start, this.id_birth_date] 
         );
     }
     //	
@@ -29,8 +28,8 @@ module.exports = class user{
         FROM users`);
     }
     //
-    static find_by_id(id){
-        return db.execute(`SELECT id, name, email, password, id_username, 
+    static async find_by_id(id){
+        return  await db.execute(`SELECT id, name, id_username, 
         id_salary, id_date_start, id_birth_date
         FROM users
         WHERE users.id = ?`,
@@ -38,8 +37,8 @@ module.exports = class user{
         );
     }
     //
-    static find_by_email(data){
-        return db.execute(`SELECT id
+    static async find_by_email(data){
+        return await db.execute(`SELECT id
         FROM users
         WHERE users.email = ?`,
         [data]
@@ -53,8 +52,8 @@ module.exports = class user{
         );
     }
     // 
-    static update_by_id(id){
-        return db.execute(`UPDATE users 
+    static async update_by_id(id, name, email , password, id_username, id_salary, id_date_start, id_birth_date){
+        return await db.execute(`UPDATE users 
         SET name = ?,
         SET email = ?, 
         SET passwrd = ?, 
@@ -62,7 +61,7 @@ module.exports = class user{
         SET id_salary = ?, 
         SET id_date_start = ?, 
         SET id_birth_date = ?
-        WHERE users.id = ?`, [this.name,this.email,this.password, this.id_username
-        , this.id_salary, this.id_date_start, this.id_birth_date, id]);
+        WHERE users.id = ?`, [name,email,password, id_username
+        , id_salary, id_date_start, id_birth_date, id]);
     }
 }
