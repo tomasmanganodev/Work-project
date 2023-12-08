@@ -92,5 +92,7 @@ router.get("/email/:email", [query("email").trim().escape()], (req, res, next) =
   controller.getUser_email(req, res, next);
 });
 
+router.get("/:page/:pageSize", controller.getUsersPag);
+
 
 module.exports = router;

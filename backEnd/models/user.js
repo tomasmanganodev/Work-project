@@ -64,4 +64,10 @@ module.exports = class user{
         WHERE users.id = ?`, [name,email,password, id_username
         , id_salary, id_date_start, id_birth_date, id]);
     }
+
+    static async pagination (start, end){
+        return await db.execute(`SELECT *
+        FROM users
+        WHERE users.id >= ? AND users.id <= ?`, [start, end]);
+    }
 }

@@ -17,18 +17,30 @@
 
     <div class="bodyRegister">
         <table class="tableRegister">
-            <tr class="rowRegister">
-                <th class="cellRegister">ID</th>
-                <th class="cellRegister" >Name</th>
-                <th class="cellRegister">Email</th>
-                <th class="cellRegister">Username</th>
-                <th class="cellRegister">Salary</th>
-                <th class="cellRegister">Birthdate</th>
-                <th class="cellRegister">Date start</th>
-            </tr>
+            <thead>
+                <tr class="rowRegister">
+                    <th class="cellRegister">ID</th>
+                    <th class="cellRegister" >Name</th>
+                    <th class="cellRegister">Email</th>
+                    <th class="cellRegister">Username</th>
+                    <th class="cellRegister">Salary</th>
+                    <th class="cellRegister">Birthdate</th>
+                    <th class="cellRegister">Date start</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                
+            </tbody>
+            
             
         </table>
+
+        <div id="pagination">
+            <button id="prev-btn">Previous</button>
+            <span id="page-info">Page 1</span>
+            <button id="next-btn">Next</button>
+        </div>
     </div>
-    <script type="module" src="../js/fetch/User.js"></script>
+    <script type="module" src="../js/fetch/userGets.js"></script>
 </body>
 </html>

@@ -223,3 +223,17 @@ exports.getUser_ID = async ( req, res, next)=>{
     next(error);
   }
 };
+
+exports.getUsersPag = async(req, res, next) =>{
+  const page = parseInt(req.params.page);
+  const pageSize = parseInt(req.params.pageSize);
+
+  console.log(page, pageSize);
+  try {
+    const users = await user.pagination(page, pageSize);
+    res.json(users[0]);
+    
+  } catch (error) {
+    next(error)
+  }
+}
