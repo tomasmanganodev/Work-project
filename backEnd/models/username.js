@@ -27,9 +27,9 @@ module.exports = class username{
     }
     //
     static async find_by_username(data){
-        return await db.execute(`SELECT id
+        return await db.execute(`SELECT *
         FROM usernames
-        WHERE usernames.username = ?`,
+        WHERE usernames.username LIKE ?`,
         [data]
         );
     }

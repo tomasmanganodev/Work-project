@@ -228,12 +228,25 @@ exports.getUsersPag = async(req, res, next) =>{
   const page = parseInt(req.params.page);
   const pageSize = parseInt(req.params.pageSize);
 
-  console.log(page, pageSize);
   try {
     const users = await user.pagination(page, pageSize);
-    res.json(users[0]);
-    
+    res.json(users[0]); 
   } catch (error) {
     next(error)
+  }
+}
+
+exports.updbyUser = async (req, res, next) => {
+  const page = parseInt(req.params.page);
+  const pageSize = parseInt(req.params.pageSize);
+  const username = req.params.uname + '%';
+
+  try {
+    
+    const users = await user.pagination2(page, pageSize, username);
+    res.json(users[0]); 
+  } catch (error) {
+    // If an error occurs, pass it to the next middleware using `next`
+    next(error);
   }
 }

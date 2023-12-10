@@ -1,43 +1,23 @@
-import { fetchData } from "../fetch/userPagination";
+import { fetchData, fetchData_byUser} from "../fetch/userPagination.js";
 
 const itemsPerPage = 10; // Number of items per page
 let currentPage = 1; // Current page
-
+const textField = document.getElementById('searchUsername');
 
 
 
 fetchData(currentPage, itemsPerPage);
 
 
+  
+
+
+textField.addEventListener('input', (event)=>{
+    event.preventDefault();
+    fetchData_byUser(currentPage, itemsPerPage, event.target.value.trim());
+  })
+
 /*
-function fetchAndRenderItems(page, limit) {
-  fetch(`${apiUrl}?page=${page}&limit=${limit}`)
-    .then((response) => response.json())
-    .then((data) => {
-      renderTable(data.items);
-      renderPagination(data.totalPages);
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error);
-    });
-}
-
-function renderTable(items) {
-  const tableBody = document.getElementById('table-body');
-  let tableHTML = '';
-
-  // Loop through fetched items and create table rows
-  items.forEach((item) => {
-    tableHTML += `<tr>
-                    <td>${item.id}</td>
-                    <td>${item.name}</td>
-                    <!-- Add other table cells based on item properties -->
-                  </tr>`;
-  });
-
-  tableBody.innerHTML = tableHTML;
-}
-
 function renderPagination(totalPages) {
   const paginationElement = document.getElementById('pagination');
   let paginationHTML = '';
