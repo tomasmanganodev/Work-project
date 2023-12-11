@@ -9,7 +9,15 @@
     height: 95%;
     margin-top: 5%;
     margin-left: 1%;
+    display: flex;
+    flex-direction: column;
    
+}
+#table-head{
+    height: 10%;
+}
+#table-body{
+    height: 90%;
 }
 
 .rowRegister{
@@ -18,6 +26,13 @@
     display: flex;
     border-bottom: 1px solid black;
 }
+
+.rowRegisterhead{
+    height: 100%;
+     width: 100%;
+     display: flex;
+     border-bottom: 1px solid black;
+ }
 
 .cellRegister{
    

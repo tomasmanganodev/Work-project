@@ -32,7 +32,7 @@ function updateTable(data) {
     let tableHTML = '';
 
     data.forEach((item) => {
-      if(item.id =! null){
+      
         tableHTML += `<tr class="rowRegister">
                       <td class="cellRegister" scope="row">${item.id}</td>
                       <td class="cellRegister">${item.name}</td>
@@ -42,7 +42,7 @@ function updateTable(data) {
                       <td class="cellRegister">${item.birthdate}</td>
                       <td class="cellRegister">${item.date_start}</td>
                     </tr>`;
-      }
+      
       
     });
   
