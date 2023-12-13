@@ -1,12 +1,14 @@
-import { fetchData, fetchData_byUser} from "../fetch/userPagination.js";
+import { fetchData, fetchData_byUser, getLastPage} from "../fetch/userPagination.js";
 
 const itemsPerPage = 10; // Number of items per page
 let currentPage = 1; // Current page
 const textField = document.getElementById('searchUsername');
-
+const previousPag = document.getElementById('previousPag');
+const nextPage = document.getElementById('nextPag');
 
 
 fetchData(currentPage, itemsPerPage);
+
 
 
   
@@ -17,25 +19,24 @@ textField.addEventListener('input', (event)=>{
     fetchData_byUser(currentPage, itemsPerPage, event.target.value.trim());
   })
 
-/*
-function renderPagination(totalPages) {
-  const paginationElement = document.getElementById('pagination');
-  let paginationHTML = '';
+previousPag.addEventListener('click', (event)=>{
+  event.preventDefault();
+    if(currentPage > 1){
+      currentPage = currentPage - 10;
+      fetchData(currentPage, itemsPerPage);
+    }
+   
+  
+  
+})
+nextPage.addEventListener('click', (event)=>{
+  event.preventDefault();
 
-  for (let i = 1; i <= totalPages; i++) {
-    paginationHTML += `<li class="page-item ${i === currentPage ? 'active' : ''}">
-                          <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
-                        </li>`;
-  }
+      currentPage = currentPage + 10;
+      fetchData(currentPage, itemsPerPage);
+    
+  
+   
+  
+})
 
-  paginationElement.innerHTML = paginationHTML;
-}
-
-function changePage(page) {
-  currentPage = page;
-  fetchAndRenderItems(currentPage, itemsPerPage);
-}
-
-// Initial fetch for the first page
-fetchAndRenderItems(currentPage, itemsPerPage);
-*/

@@ -65,18 +65,19 @@ module.exports = class user{
         , id_salary, id_date_start, id_birth_date, id]);
     }
 
-    static async pagination (start, end){
-        return await db.execute(`SELECT users.id, name, email, id_username, id_salary,
-        id_date_start, id_birth_date, salaries.salaries,
-        usernames.username, date_start.date_start, 
-        birthdates.birthdate
-        FROM users
-        INNER JOIN salaries on users.id_salary = salaries.id
-        INNER JOIN usernames on users.id_username = usernames.id
-        INNER JOIN date_start on users.id_date_start = date_start.id
-        INNER JOIN birthdates on users.id_birth_date = birthdates.id
-        WHERE users.id >= ? AND users.id <= ?`, [start, end]);
-    }
+    static async pagination(start, end){
+        return await db.execute(`
+          SELECT users.id, name, email, id_username, id_salary,
+          id_date_start, id_birth_date, salaries.salaries,
+          usernames.username, date_start.date_start, 
+          birthdates.birthdate
+          FROM users
+          INNER JOIN salaries ON users.id_salary = salaries.id
+          INNER JOIN usernames ON users.id_username = usernames.id
+          INNER JOIN date_start ON users.id_date_start = date_start.id
+          INNER JOIN birthdates ON users.id_birth_date = birthdates.id
+          LIMIT ?, ?`, [start.toString(), end.toString()]);
+      }
 
     static async pagination2 (start, end, username){
         return await db.execute(`SELECT users.id, name, email, salaries.salaries,
@@ -87,8 +88,9 @@ module.exports = class user{
         INNER JOIN usernames on users.id_username = usernames.id
         INNER JOIN date_start on users.id_date_start = date_start.id
         INNER JOIN birthdates on users.id_birth_date = birthdates.id
-        WHERE users.id >= ? AND users.id <= ? AND usernames.username LIKE ?`, 
-        [start, end, username]);
+        WHERE usernames.username LIKE ?
+        LIMIT ?, ?`, 
+        [username, start.toString(), end.toString()]);
     }
     
     static async getLastID(){

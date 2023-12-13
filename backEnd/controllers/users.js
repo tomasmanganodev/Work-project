@@ -227,6 +227,7 @@ exports.getUser_ID = async ( req, res, next)=>{
 exports.getUsersPag = async(req, res, next) =>{
   const page = parseInt(req.params.page);
   const pageSize = parseInt(req.params.pageSize);
+  console.log(page, pageSize);
 
   try {
     const users = await user.pagination(page, pageSize);
