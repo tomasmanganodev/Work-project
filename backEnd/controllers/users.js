@@ -227,11 +227,14 @@ exports.getUser_ID = async ( req, res, next)=>{
 exports.getUsersPag = async(req, res, next) =>{
   const page = parseInt(req.params.page);
   const pageSize = parseInt(req.params.pageSize);
-  console.log(page, pageSize);
+  
 
   try {
     const users = await user.pagination(page, pageSize);
-    res.json(users[0]); 
+    const Total = await user.getTotal();
+    
+    res.json({users: users[0], total:Total[0]}); 
+   
   } catch (error) {
     next(error)
   }
@@ -245,9 +248,23 @@ exports.updbyUser = async (req, res, next) => {
   try {
     
     const users = await user.pagination2(page, pageSize, username);
-    res.json(users[0]); 
+    const Total = await user.getTotalUsernames(username);
+    
+    res.json({users: users[0], total:Total[0]}); 
+    
   } catch (error) {
     // If an error occurs, pass it to the next middleware using `next`
     next(error);
   }
 }
+
+/*exports.getTotalUsers= async (req, res, next ) => {
+  const number = parseInt(req.params.number);
+
+  if(number == 0){
+    const users = await user.getTotal();
+  }
+  else if (number == 1){
+    
+  }
+}*/

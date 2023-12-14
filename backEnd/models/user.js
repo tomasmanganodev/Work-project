@@ -93,10 +93,19 @@ module.exports = class user{
         [username, start.toString(), end.toString()]);
     }
     
-    static async getLastID(){
-        return await db.execute(`SELECT MAX(id) 
+    static async getTotal(){
+        return await db.execute(`SELECT COUNT(*) 
         FROM users`);
     }
+
+    static async getTotalUsernames(username){
+        return await db.execute(`SELECT COUNT(*)  
+        FROM users
+        INNER JOIN usernames on users.id_username = usernames.id
+        WHERE usernames.username LIKE ?`, 
+        [username]);
+    }
+
 
     
 }

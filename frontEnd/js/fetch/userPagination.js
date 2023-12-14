@@ -4,10 +4,10 @@ export async function fetchData(page, pageSize){
     try {
         const url = `http://localhost:3333/user/${page}/${pageSize}`;
         const data = await getData(url);
-        const paglist = document.getElementById('PaglastPage');
-        console.log(data.length); 
-        updateTable(data);
-        paglist.innerHTML = getLastPage(pageSize, data.length);;
+        
+        
+        updateTable(data.users);
+        
         
 
       } catch (error) {
@@ -19,8 +19,8 @@ export async function fetchData_byUser(page, pageSize, username){
   try {
       const url = `http://localhost:3333/user/${page}/${pageSize}/${username}`;
       const data = await getData(url);
-      console.log(data); 
-      updateTable(data);
+      console.log(data.users); 
+      updateTable(data.users);
       getLastPage(pageSize, data.length);
     } catch (error) {
       console.error('Error fetching data:', error.message);
