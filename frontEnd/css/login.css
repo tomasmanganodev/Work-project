@@ -29,12 +29,15 @@
     height: 100%;
     width: 50%;
     background-color: #C5C8D5;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .registerLoginbox{
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 100%;
     width: 100%;
     align-items: center;
     align-content: space-between;
@@ -54,6 +57,7 @@
 .registerLogItem{
     width: 60%;
     margin: 1.5% 0 1.5% 0;
+    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,4 +67,8 @@
 .logButton{
  width: 100%;
 
+}
+
+.inputt{
+    width: 100%;
 }
